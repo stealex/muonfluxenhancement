@@ -1,0 +1,100 @@
+#================================================
+#     Macro file for hadr01
+#================================================
+########################################################################
+#############      Verbosity options    ################################
+########################################################################
+
+/control/verbose 2
+/run/verbose 2
+/tracking/verbose 0
+
+#########################################################################
+#############       Physics options     #################################
+#########################################################################
+#
+#
+# /testhadr/G4Physics: Must be a valid G4 PhysicsList name. Tested: FTFP_BERT, QGSP_FTFP_BERT
+#
+################################################################################################
+
+/testhadr/Physics FTFP_BERT
+
+################################################################################################
+########################   Biasing options  ####################################################
+################################################################################################
+# /biasing/BiasMethod: integer flagging whether or not the muon enhancement algorithm should be
+#                            applied. Default: 0 (no).
+#                            Default: 0
+#    0: No biasing
+#    1: Clone pi/K/gamma/K0L at creation. Force them to produce muons up to a certain Z. See below.
+#
+################################################################################################
+
+/biasing/BiasMethod 1
+
+################################################################################################
+########################   Tracking and Stacking options #######################################
+################################################################################################
+#
+# /testhadr/killAll: bool flag whether to kill (true) or not (false) 
+#                     all secondaries at creation
+#
+# /testhadr/killEM: bool flag whether to kill (true) or not (false)    
+#                   secondary electrons, positrons and gammas
+#
+# /testhadr/EnergyThreshold: Minimum kinetic energy for a newly created secondary to be tracked
+#
+#################################################################################################
+
+/testhadr/killAll false
+/testhadr/killEM  false
+/testhadr/EnergyThreshold 3.0 GeV
+
+################################################################################################
+####################   Scoring Options #########################################################
+################################################################################################
+#
+# /score/VolumeParticles: List of blank separated integers representing the PDGids of particles
+#                         to be stored in the output file. It applies to all particles created 
+#                         in the event, regardless of the origin point.
+#      example: 
+#(This line should always be commented)                        p     pbar  K+   K- pi+  pi- pi0 eta ome rho et' phi rh+  rh-
+#                                       /score/VolumeParticles 2212 -2212 321 -321 211 -211 111 221 223 113 331 333 213 -213
+#
+# /score/PlaneParticles: List of blank separated integers representing the PDGids of particles
+#                        to be stored in the output file. It applies to all particles crossing
+#                        a plane imediately after the TAX. Output will be empty unless
+#                            /testhadr/geometry = 1
+#                            /testhadr/buildSampler = true
+#       example:  /score/PlaneParticles 13 -13
+###############################################################################################
+
+/score/VolumeParticles 13 -13
+/score/VolumeParticlesMinMomentum 3000
+/score/PlaneParticles 13 -13 
+
+###############################################################################################
+##################   Geometry options #########################################################
+###############################################################################################
+#
+#  /testhadr/geometry: Integer value representing the beamline setup. 
+#                           0 = Simplified TAX.
+#                      The proton beam is placed directly in front of the TAX.
+#  
+#  /testhadr/buildSampler: Bool flag wheter (true) or not (false) to build a scoring plane after TAX
+#
+###############################################################################################
+
+/testhadr/geometry 0
+/testhadr/buildSampler true
+
+###############################################################################################
+################   Generic options and Run Start ##############################################
+###############################################################################################
+
+/run/initialize
+
+/gun/particle proton
+/gun/energy 401 GeV
+/run/beamOn 10000
