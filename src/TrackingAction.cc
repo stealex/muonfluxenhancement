@@ -92,9 +92,6 @@ void TrackingAction::PostUserTrackingAction(const G4Track *aTrack)
     {
         fScoredParticle->SetProdProcess(aTrack->GetCreatorProcess()->GetProcessName().data());
     }
-    // fScoredParticle->SetEndProcess(aTrack->GetStep()->GetPreStepPoint()->GetProcessDefinedStep()->GetProcessName().data());
-    // ScoringUtility::GetInstance()->GetScoringDir()->cd();
-    // fScoringTree->Fill();
     Float_t outputVar[18];
 
     outputVar[0] = endPos.x();
@@ -112,7 +109,7 @@ void TrackingAction::PostUserTrackingAction(const G4Track *aTrack)
     outputVar[12] = fInitialMomentum.vect().x();
     outputVar[13] = fInitialMomentum.vect().y();
     outputVar[14] = fInitialMomentum.vect().z();
-    outputVar[15] = 0.0; // InitT
+    outputVar[15] = 1. * info->GetTrackType(); // InitT
     outputVar[16] = 1. * G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
     outputVar[17] = 1. * info->GetMotherPDGid();
 
