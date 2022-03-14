@@ -1,6 +1,7 @@
 # MuonFluxEnhancement
 
 Sample application implementing the algorithm described in [Eur. Phys. J. C 81, 767 (2021)](https://doi.org/10.1140/epjc/s10052-021-09541-7)
+Original repository here: https://gitlab.cern.ch/sghinesc/muonfluxenhancement
 
 The geometry is a simplified version of the NA62 TAX, consisting of two blocks of copper followed by 6 blocks of iron of the same length. The total length is appxoimately 3.2 meters.
 
