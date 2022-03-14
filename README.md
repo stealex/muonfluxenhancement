@@ -1,5 +1,9 @@
 # MuonFluxEnhancement
 
+
+[![DOI](https://zenodo.org/badge/469697797.svg)](https://zenodo.org/badge/latestdoi/469697797)
+
+
 Sample application implementing the algorithm described in [Eur. Phys. J. C 81, 767 (2021)](https://doi.org/10.1140/epjc/s10052-021-09541-7)
 Original repository here: https://gitlab.cern.ch/sghinesc/muonfluxenhancement
 
